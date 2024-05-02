@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      /* background-color: rgb(17, 17, 17);  */
+      background-image: url(epic-games-logo-black-and-white.png);
+      background-size: cover;
+      background-position: center;
+
+
+    }
+
+    #login-container {
+      background-color: #17171d;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    #login-container input {
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    #login-container button {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 4px;
+      background-color: rgb(17, 17, 17);
+      color: #fff;
+      cursor: pointer;
+    }
+
+    #login-container button:hover {
+      background-color: #0056b3;
+    }
+
+    #error-message {
+      color: red;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="login-container">
+    <h2 style="color: white; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: 100; "
+      align="center">LOGIN </h2>
+    <div id="error-message"></div>
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Password">
+    <button onclick="login()"><img src="epic-games-logo.png" alt="" width="20px"></button>
+    <!-- <p style="color: white;">Don't have an account? p -->
+  </div>
+
+  <script>
+    function login() {
+      var username = document.getElementById('username').value;
+      var password = document.getElementById('password').value;
+
+      // Simple validation
+      if (username === '' || password === '') {
+        document.getElementById('error-message').innerText = 'Please enter username and password.';
+        return;
+      }
+
+      // Simulating a login request (replace with your actual login logic)
+      if (username === 'EpicGames' && password === 'Epicgame') {
+        window.location.href = "epicgames.html";
+        // Redirect to dashboard or any other page
+      } else {
+        document.getElementById('error-message').innerText = 'Invalid username or password.';
+      }
+    }
+  </script>
+
+</body>
+
+</html>

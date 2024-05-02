@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="epicfetch.css">
+</head>
+
+
+<body style="background-color:rgb(17, 17, 17); font-family: Arial, Helvetica, sans-serif;">
+
+
+    <div class="upper-box">
+        <h1 style="color: white; font-weight: 300; font-size: 30px; " align="center"> EPIC GAMES FETCH API</h1>
+    </div>
+    <br>
+    <form action="">
+        <table>
+            <tr>
+                <td id="five" style="color: white; font-weight: 800; font-size: large;">GAME NAME:</td>
+                <td><input type="text" placeholder="Search Game" id="input" style="border-radius: 10px;"></td>
+                <td><button id="sub"><img src="epic-games-logo.png" alt="logo" width="15"></button></td>
+            </tr>
+        </table>
+    </form>
+    </div>
+    <div style="color: white; font-weight: 100; font-family: sans-serif;">
+        <br>
+        <table id="con" border="1" style="background-color:#17171d;">
+            <tr>
+                <th style="font-weight: 100;">TITLE</th>
+                <th style="font-weight: 100;">ID</th>
+                <th style="font-weight: 100;">DESCRIPTION
+                </th>
+                <th style="font-weight: 100;">PUBLISHER-NAME</th>
+                <th style="font-weight: 100;">CURRENT-PRICE</th>
+            </tr>
+        </table>
+    </div>
+    <div>
+        <script>
+            const options = {
+                method: 'GET',
+                headers: {
+                    'X-RapidAPI-Key': '7b720da58cmshb52c47e7e3ff785p154604jsn9dfc85cc2a2a',
+                    'X-RapidAPI-Host': 'epic-store-games.p.rapidapi.com'
+                }
+            };
+            inp = document.getElementById('input')
+            gametitle = document.getElementById('seven')
+            con = document.getElementById('con')
+            // gamedes = document.getElementById('nine')
+            // gamepub = document.getElementById('ten')
+            // gamecur = document.getElementById('ele')
+
+            let gameapi = (game) => {
+                inp.innerHTML = input
+
+                fetch('https://epic-store-games.p.rapidapi.com/onSale?searchWords=' + game,
+                    options).then((response) => {
+                        console.log(response.status)
+                        console.log(response.ok)
+                        return response.json()
+                    }).then((data => {
+                        console.log(data)
+                        game.innerHTML = data.title
+                        for (var i = 0; i < data.length; i++) {
+                            con.innerHTML += "<tr>" + "<td>" + data[i].title + "</td>" + "<td>" + data[i].id + "</td>" +
+                                "<td>" + data[i].description + "</td>" + "<td>" + data[i].publisherName + "</td>" +
+                                "<td>" + data[i].currentPrice + "</td>"
+                            "</tr>"
+
+                        }
+
+
+
+                    })
+                    )
+            }
+            sub.addEventListener(
+                'click', (event) => {
+                    event.preventDefault(),
+                        gameapi(inp.value)
+                })
+
+            // gameapi('nfs')
+
+
+
+
+        </script>
+
+
+
+
+
+
+</body>
+
+</html>
